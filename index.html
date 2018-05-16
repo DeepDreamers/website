@@ -73,10 +73,11 @@
 						var mesh = new THREE.Mesh( geometry, material );
 						scene.add( mesh );
 
-						// var geometry = new THREE.BoxGeometry( 100, 100, 100, 4, 4, 4 );
-						// var material = new THREE.MeshBasicMaterial( { color: 0x00ffff, side: THREE.BackSide, wireframe: true } );
-						// var mesh = new THREE.Mesh( geometry, material );
-						// scene.add( mesh );
+						if (window.DeviceOrientationEvent && 'ontouchstart' in window) {
+							controls = new THREE.DeviceOrientationControls( camera );
+						} else {
+							window.location.replace("./gallery.html")
+						}
 
 						renderer = new THREE.WebGLRenderer();
 						renderer.setPixelRatio( window.devicePixelRatio );
